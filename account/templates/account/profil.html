@@ -1,0 +1,11 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Ваш профиль{% endblock %}
+
+{% block content %}
+  <div class="profil">
+    <h2>{{ user.username }}</h2>
+    <p>{{ user.first_name }}</p>
+    <a href="{% url 'account:password_change' %}">Изменить пароль</a>
+  </div>
+{% endblock %}

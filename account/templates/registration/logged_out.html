@@ -1,0 +1,10 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Выйти{% endblock %}
+
+{% block content %}
+  <div class="logout">
+    <h2>Вы вышли успешно вышли из профиля</h2>
+    <p><a href="{% url 'account:login' %}"></a></p>
+  </div>
+{% endblock %}

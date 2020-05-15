@@ -1,0 +1,28 @@
+from django.contrib import admin
+from .models import *
+
+class ValueAndPricesLine(admin.TabularInline):
+    model = ValueAndPrices
+    extra = 1
+# class value_inline(admin.TabularInline):
+#     model = ValueAndPrices
+#     extra = 1
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug',
+                    'available', 'created', 'updated']
+    list_filter = ['available', 'created', 'updated']
+    list_editable = [ 'available']
+    prepopulated_fields = {'slug': ('name',)}
+    # inlines = (value_inline,)
+    inlines = [
+        ValueAndPricesLine,
+    ]
+
+admin.site.register(ValueAndPrices)

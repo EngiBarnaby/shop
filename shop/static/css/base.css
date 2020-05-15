@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spectral+SC:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+
+@font-face {
+     font-family: 'ArtDeco';
+     src: url('/static/fonts/GrenadierNF.ttf')  format("truetype"),
+          local('ArtDeco');
+}
+
+
+a {
+  text-decoration: none;
+  color: black;
+}
+html {
+  background-color: #e8eef5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* body {
+    margin:0;
+    padding:0;
+    font-family:helvetica, sans-serif;
+} */
+
+.header {
+  width: 100%;
+  background:  #adbdcd;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+.header .user-menu {
+  margin-right: 10px;
+  margin-top: 7px;
+  margin-bottom: 3px;
+  float: right;
+}
+
+.header #user-cart {
+  display: inline-block;
+  background: #25b961;
+  color: #041f30;
+  margin-bottom: 5px;
+  position: absolute;
+  top: 35px;
+  right: 15px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+}
+
+.header #user-cart:hover {
+  background:  #3ae671;
+}
+
+.user-menu a {
+  color: #0d83ff;
+}
+
+.logo {
+  font-family: 'Yeseva One';
+  float:left;
+  color: #757c83;
+  font-size:45px;
+  margin-right:10%;
+  margin-left: 7px;
+}
+.logo a {
+  color: #6F1907;
+}
+
+.product-title {
+  font-family: 'Noto Serif', serif;
+  font-size: 17px;
+}
+/* .header {
+  position: relative;
+  background-color: #d3c931 ;
+  width: 100%;
+  height: 65px;
+  padding: 7px;
+  margin-bottom: 30px;
+}
+
+.header h2 {
+  font-family: 'Spectral SC', serif ;
+  font-size: 25px;
+} */
+
+/* .user-menu {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+} */
+
+/* .header a {
+  color : #15bafd;
+}
+
+.header a:active {
+  color: #15bafd;
+} */
+
+#content {
+    padding:0 100px;
+    overflow:hidden;
+}
+
+#sidebar {
+    width:220px;
+    padding:30px 20px 0 0;
+    float:left;
+}
+
+#sidebar ul{
+    margin:0;
+    padding:0;
+}
+
+#sidebar ul li {
+    margin:0;
+    list-style:none;
+    padding:10px 14px;
+}
+
+#sidebar ul li a {
+    display:block;
+}
+
+#sidebar ul li.selected {
+    background:#5993bb;
+    border-radius:4px;
+}
+
+#sidebar ul li.selected a {
+    color:#fff;
+}
+
+#main {
+    color:  #816a3a ;
+    float:left;
+    width: 96%;
+    margin-right:-220px;
+    overflow:hidden;
+}
+
+.product-list .item {
+    display: inline-block;
+    /* border: 4px crimson solid; */
+    width:25%;
+    padding:10px 20px 10px 0;
+    float:left;
+    text-align:center;
+    line-height:1.2;
+    min-height: 400px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.product-list .item img {
+    width:100%;
+    margin: 0 auto;
+}
+
+.product-title {
+  min-height: 45px;
+  overflow: hidden;
+}
+
+.product-detail {
+    text-align:justify;
+}
+
+.product-detail img {
+  width: 40%;
+  float:left;
+  margin-right: 20px;
+}
+
+.product-detail p {
+  margin: auto;
+}
+
+
+.product-detail .product-price {
+    color:#333;
+    font-size:15px;
+    font-weight:bold;
+
+}
+
+.cart img{
+  width: 100px;
+}
+
+.cart table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.cart th, td {
+  padding: 10px 15px;
+}
+
+.cart thead {
+  background:  #adbdcd;
+  color: #fff;
+}
+
+.cart tbody tr:nth-child(even){
+  background: #f0f0f2;
+}
+
+.cart td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+
+
+.footer {
+  width: 100%;
+  background:  #adbdcd;
+  height: 70px;
+  display: inline-block;
+  margin-right: 0;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
