@@ -59,7 +59,7 @@
         <div class="col mb-4">
             <div class="card h-100">
               <a href="{{ item.get_absolute_url }}">
-                <img class="card-img-top" src="{{ item.image.url }}">
+                <img class="card-img-top" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
               </a>
               <div class="card-body">
                 <a href="{{ item.get_absolute_url }}" class="text-dark">
