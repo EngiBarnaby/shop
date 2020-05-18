@@ -1,0 +1,40 @@
+{% extends "shop/base_2.html" %}
+{% load static %}
+
+{% block title %}Карзина{% endblock %}
+
+{% block content %}
+  <div class="container mb-4 mt-4">
+    <table class="table">
+      <caption>Список покупок</caption>
+      <thead>
+        <tr>
+          <th scope="col">Название</th>
+          <th scope="col">Изображение</th>
+          <th scope="col">Цена</th>
+          <th scope="col">Количество</th>
+          <th scope="col">Размер</th>
+          <th scope="col">Общая стоимость</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart %}
+          {% with product=item.product %}
+          <tr>
+            <td>{{ product.name }}</td>
+            <td>
+              <a href="{{ product.get_absolute_url }}">
+              <img class="img-fluid" src="{% if product.image %}{{ product.image.url }}{% endif %}">
+              </a>
+            </td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{% for item in item.size %}{{ item }}{% endfor %}</td>
+            <td>{{ item.total_price }}</td>
+          </tr>
+          {% endwith %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

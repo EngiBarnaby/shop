@@ -37,3 +37,6 @@ def product_detail_2(request, slug, id):
     value_form = ValueForm(id)
     context = {"product" : product, "cart_product_form": cart_product_form, 'value_form' : value_form}
     return render(request, "shop/product/detail_2.html", context)
+
+def about_us(request):
+    return render(request, "shop/aboutus.html", {})
