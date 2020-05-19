@@ -1,0 +1,33 @@
+{% extends 'shop/base_2.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="row">
+        <div class="col-6-md">
+          <form action="." method="post">
+              <p>{{ form.first_name|as_crispy_field }}</p>
+              <p>{{ form.last_name|as_crispy_field }}</p>
+              <p>{{ form.email|as_crispy_field }}</p>
+              <p>{{ form.phone_number|as_crispy_field }}</p>
+              <p>{{ form.address|as_crispy_field }}</p>
+            {% csrf_token %}
+            <input type="submit" value="Оформить заказ">
+          </form>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            {% for item in cart %}
+              <li>
+                {{ item.quantity }}шт. {{ item.product.name }}
+                <p>{{ item.total_price }}</p>
+              </li>
+              {% endfor %}
+          </ul>
+          <p>Общая сумма: {{ cart.get_total_price }}</p>
+        </div>
+    </div>
+  </div>
+{% endblock %}
