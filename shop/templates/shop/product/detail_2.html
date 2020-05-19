@@ -20,11 +20,11 @@
               {% for item in product.prices.all %}
                 {% if item.image.url == product.prices.first.image.url %}
                   <div class="carousel-item active">
-                    <img src="{{ item.image.url }}" class="img-fluid">
+                    <img src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="img-fluid">
                   </div>
                   {% else %}
                   <div class="carousel-item">
-                    <img src="{{ item.image.url }}" class="img-fluid">
+                    <img src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="img-fluid">
                   </div>
               {% endif %}
             {% endfor %}
@@ -43,7 +43,7 @@
           <h4>{{ product.name }}</h4>
           <br>
           {% for item in product.prices.all %}
-            <h5>{{ item.value }}кг за {{ item.another_price }}р</h5>
+            <h5>{{ item.value }}кг {{ item.another_price }}р</h5>
           {% endfor %}
           <form action="{% url 'cart:cart_add' product.id %}" method="post">
             <div class="row">
