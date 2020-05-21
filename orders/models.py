@@ -10,6 +10,8 @@ class Order(models.Model):
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
+    delivery = models.CharField(max_length=20)
+    verification = models.CharField(max_length=20)
 
     def __str__(self):
         return 'Заказ {}'.format(self.id)

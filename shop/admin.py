@@ -25,4 +25,8 @@ class ProductAdmin(admin.ModelAdmin):
         ValueAndPricesLine,
     ]
 
+@admin.register(AddressAndPhone)
+class AddressAndPhoneForm(admin.ModelAdmin):
+    list_display = ['address', 'phone_number', 'map_image']
+
 admin.site.register(ValueAndPrices)

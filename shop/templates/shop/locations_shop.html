@@ -1,0 +1,22 @@
+{% extends 'shop/base_2.html' %}
+
+{% block title %}Адреса магазинов{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2">
+       {% for location in locations %}
+        <div class="col mb-4">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">{{ location.address|linebreaks }}</p>
+              <p class="card-text">{{ location.phone_number }}</p>
+              <img src="" alt="">
+            </div>
+            <img src="{{ location.map_image.url }}" class="card-top-img img-fluid">
+          </div>
+        </div>
+       {% endfor %}
+    </div>
+  </div>
+{% endblock %}

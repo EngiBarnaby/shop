@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from phonenumber_field.modelfields import PhoneNumberField
 
 class Category(models.Model):
     name = models.CharField(max_length = 100, db_index=True)
@@ -51,3 +52,15 @@ class ValueAndPrices(models.Model):
     class Meta:
         verbose_name = 'Величина и цена'
         verbose_name_plural = "Величины и цены"
+
+class AddressAndPhone(models.Model):
+    address = models.TextField()
+    map_image = models.ImageField(upload_to='map_image',blank=True)
+    phone_number = models.CharField(max_length=25)
+
+    def __str__(self):
+        return str(self.address)
+
+    class Meta:
+        verbose_name = "Адрес и номер телефона"
+        verbose_name_plural = "Адреса и номера телефонов"

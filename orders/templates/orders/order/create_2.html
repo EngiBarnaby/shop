@@ -13,6 +13,13 @@
               <p>{{ form.email|as_crispy_field }}</p>
               <p>{{ form.phone_number|as_crispy_field }}</p>
               <p>{{ form.address|as_crispy_field }}</p>
+              <p>
+                <a href="#choices" class="btn btn-primary" data-toggle="collapse">Доставка</a>
+              </p>
+              <div class="collapse" id="choices">
+                <p>{{ form.delivery }}</p>
+                <p>{{ form.verification }}</p>
+              </div>
             {% csrf_token %}
             <input type="submit" value="Оформить заказ">
           </form>

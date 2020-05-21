@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product
+from .models import Category, Product, AddressAndPhone
 from cart.forms import *
 
 def product_list(request, category_slug=None):
@@ -40,3 +40,8 @@ def product_detail_2(request, slug, id):
 
 def about_us(request):
     return render(request, "shop/aboutus.html", {})
+
+def locations(request):
+    all_locations = AddressAndPhone.objects.all()
+    context = {"locations" : all_locations}
+    return render(request, "shop/locations_shop.html", context)
