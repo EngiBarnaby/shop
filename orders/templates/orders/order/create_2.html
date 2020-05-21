@@ -13,12 +13,29 @@
               <p>{{ form.email|as_crispy_field }}</p>
               <p>{{ form.phone_number|as_crispy_field }}</p>
               <p>{{ form.address|as_crispy_field }}</p>
+              <p>Выберите способ доставки</p>
+              <div class="form-group row">
+                {% for radio in form.delivery %}
+                  <div class="custom-control custom-radio">
+                      {{ radio.tag }}
+                      <label class="custom-control-label" for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                  </div>
+                {% endfor %}
+              </div>
+              <p>Выберите способ подтверждения</p>
+              <div class="form-group row">
+                {% for radio in form.verification %}
+                  <div class="custom-control custom-radio">
+                      {{ radio.tag }}
+                      <label class="custom-control-label" for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                  </div>
+                {% endfor %}
+              </div>
               <p>
-                <a href="#choices" class="btn btn-primary" data-toggle="collapse">Доставка</a>
+                <a href="#choices" class="btn btn-primary" data-toggle="collapse">Информация о доставке</a>
               </p>
               <div class="collapse" id="choices">
-                <p>{{ form.delivery }}</p>
-                <p>{{ form.verification }}</p>
+                <h5>Доставка по Санкт-Петербургу 200 рублей,<br />при покупке на сумму от 1500 рублей - бесплатно.</h5>
               </div>
             {% csrf_token %}
             <input type="submit" value="Оформить заказ">

@@ -26,5 +26,5 @@ class OrderForm(forms.ModelForm):
             'address' : 'Адрес',
         }
 
-        widgets = {'delivery' :forms.RadioSelect(attrs={'name': 'rating'}, choices=delivery_choice),
-                    'verification' : forms.RadioSelect(attrs={'name': 'rating'}, choices=verification_choice)}
+        widgets = {'delivery' :forms.RadioSelect(attrs={'class':'custom-control-input custom-control-label'}, choices=delivery_choice),
+                    'verification' : forms.RadioSelect(attrs={'class':'custom-control-input custom-control-label'}, choices=verification_choice)}
