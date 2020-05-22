@@ -44,7 +44,7 @@ class ValueAndPrices(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name="prices")
     value = models.DecimalField(max_digits=10, decimal_places = 3, null=True)
     another_price = models.DecimalField(max_digits=10, decimal_places = 2, null=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d',blank=True)
+    image = models.ImageField(upload_to='products/%Y/%d/%m',blank=True)
 
     def __str__(self):
         return str(self.value)
