@@ -1,6 +1,6 @@
 from django import forms
 from .models import Order
-
+from phonenumber_field.formfields import PhoneNumberField
 
 delivery_choice = [
                     ("Доставка курьером", "Доставка курьером"),
@@ -15,6 +15,7 @@ verification_choice = [
 class OrderForm(forms.ModelForm):
     # delivery = models.ChoiceField(widget = forms.RadioSelect, choices=delivery_choice)
     # verification = models.ChoiceField(widget = forms.RadioSelect, choices=verification_choice)
+
     class Meta:
         model = Order
         exclude = ['create', 'update', 'paid']

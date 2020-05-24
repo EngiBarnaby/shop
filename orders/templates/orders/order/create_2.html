@@ -1,5 +1,6 @@
 {% extends 'shop/base_2.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}Оформление заказа{% endblock %}
 
@@ -54,4 +55,8 @@
         </div>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src='{% static "js/jquery.mask.min.js" %}'></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
 {% endblock %}

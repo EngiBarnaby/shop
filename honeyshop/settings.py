@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'phone_field',
     'phonenumber_field',
 ]
 
@@ -114,7 +115,7 @@ LOGIN_URL = 'account:login'
 
 LOGOUT_URL = 'account:logout'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 

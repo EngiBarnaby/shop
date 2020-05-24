@@ -1,11 +1,15 @@
 from django.db import models
 from shop.models import Product
+from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import RegexValidator
+from phone_field import PhoneField
+
 
 class Order(models.Model):
     first_name = models.CharField(max_length = 100)
     last_name = models.CharField(max_length = 100)
     email = models.EmailField()
-    phone_number = models.IntegerField()
+    phone_number = models.CharField(max_length=12, blank=True)
     address = models.CharField(max_length=150)
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
