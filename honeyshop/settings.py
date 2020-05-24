@@ -25,7 +25,7 @@ SECRET_KEY = '2*#6z5d3mg2fqveh86hcirc+il&zn7c*lhnaue4)oksg#oi1dp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1:8001']
 
 
 # Application definition
@@ -76,6 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'honeyshop.wsgi.application'
 
+SECURE_REFERRER_POLICY = 'same-origin'
 
 SECURE_SSL_REDIRECT = True
 
