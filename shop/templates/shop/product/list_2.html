@@ -75,7 +75,41 @@
     </div>
   </div>
 </main>
-{% endblock %}
+<!-- Пагинатор -->
+<div class= "container">
+  <nav aria-label="main-paginator">
+    <ul class="pagination pagination-lg justify-content-center">
+      {% if page.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page.previous_page_number }}">Назад</a>
+        </li>
+      {% endif %}
+
+      {% for n in page.paginator.page_range %}
+
+        {% if page.number == n %}
+
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ n }}">{{ n }}</a>
+          </li>
+
+        {% elif n > page.number|add:-3 and n <  page.number|add:3 %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ n }}">{{ n }}</a>
+          </li>
+        {% endif %}
+
+      {% endfor %}
+
+      {% if page.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page.next_page_number }}">Вперёд</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+  {% endblock %}
 
 <!-- <section class="text-center mb-4">
   <div class="row row-cols-md-1 row-cols-md-3">

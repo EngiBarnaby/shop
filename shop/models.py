@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from phonenumber_field.modelfields import PhoneNumberField
+
 
 class Category(models.Model):
     name = models.CharField(max_length = 100, db_index=True)

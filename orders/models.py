@@ -1,8 +1,6 @@
 from django.db import models
 from shop.models import Product
-from phonenumber_field.modelfields import PhoneNumberField
-from django.core.validators import RegexValidator
-from phone_field import PhoneField
+
 
 
 class Order(models.Model):
