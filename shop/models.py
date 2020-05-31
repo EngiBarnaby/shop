@@ -17,6 +17,24 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse("shop:product_list_by_category", args=[self.slug])
 
+class Subcategory(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, unique=True)
+    products = models.ManyToManyField("Product", related_name="subcategories")
+
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Подкатегория'
+        verbose_name_plural = 'Подкатегорий'
+
+    def get_absolute_url(self):
+        return reverse("shop:product_list_by_subcategory", args=[self.slug])
+
+
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name="products", on_delete=models.CASCADE)
     name = models.CharField(max_length = 200, db_index = True)

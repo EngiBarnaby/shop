@@ -13,13 +13,21 @@
               <p>{{ form.last_name|as_crispy_field }}</p>
               <p>{{ form.email|as_crispy_field }}</p>
               <p>{{ form.phone_number|as_crispy_field }}</p>
-              <p>{{ form.address|as_crispy_field }}</p>
               <p>Выберите способ доставки</p>
               <div class="form-group row">
-                {% for radio in form.delivery %}
+                <button type="button" class="btn btn-secondary ml-3 mr-2" data-toggle="collapse" data-target="#collapseTwo"
+                          aria-expanded="false" aria-controls="collapseExample">Доставка курьером</button>
+                <button type="button" class="btn btn-secondary ml-3 mr-2" data-toggle="collapse" data-target="#collapseOne"
+                          aria-expanded="false" aria-controls="collapseExample">Самовывоз</button>
+              </div>
+              <div class="collapse" id="collapseTwo">
+                <p>{{ form.address|as_crispy_field  }}</p>
+              </div>
+              <div class="collapse" id="collapseOne">
+                {% for item in form.adress_choice %}
                   <div class="custom-control custom-radio">
-                      {{ radio.tag }}
-                      <label class="custom-control-label" for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                      {{ item.tag }}
+                      <label class="custom-control-label" for="{{ item.id_for_label }}">{{ item.choice_label }}</label>
                   </div>
                 {% endfor %}
               </div>
@@ -42,7 +50,7 @@
             <input type="submit" value="Оформить заказ">
           </form>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 offset-md-1 mt-4">
           <ul>
             {% for item in cart %}
               <li>

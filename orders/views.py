@@ -16,6 +16,7 @@ def order_create(request):
             cart.clear()
             context = {'order' : order}
             return render(request, 'orders/order/created_2.html', context)
+            
     else:
         form = OrderForm()
         context = {'form' : form, 'cart': cart}
