@@ -1,19 +1,22 @@
 from django.db import models
 from shop.models import Product
-
+from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import RegexValidator
+from phone_field import PhoneField
 
 
 class Order(models.Model):
     first_name = models.CharField(max_length = 100)
     last_name = models.CharField(max_length = 100)
     email = models.EmailField()
-    phone_number = models.CharField(max_length=12, blank=True)
-    address = models.CharField(max_length=150)
+    phone_number = models.CharField(max_length=30, blank=True)
+    address = models.CharField(max_length=150, null=True, blank=True)
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
-    delivery = models.CharField(max_length=20)
+    delivery = models.CharField(max_length=100, null=True, blank=True)
     verification = models.CharField(max_length=20)
+    adress_choice = models.CharField(max_length=150, null=True)
 
     def __str__(self):
         return 'Заказ {}'.format(self.id)
@@ -40,3 +43,14 @@ class OrderItem(models.Model):
 
     def get_cost(self):
         return self.price * self.quantity
+
+class ShopAdress(models.Model):
+    adress = models.CharField(max_length=150)
+    phone = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.adress
+
+    class Meta:
+        verbose_name = 'Адресс'
+        verbose_name_plural = 'Адресса'

@@ -8,6 +8,15 @@ class ValueAndPricesLine(admin.TabularInline):
 #     model = ValueAndPrices
 #     extra = 1
 
+class SubcategoryinLine(admin.TabularInline):
+    model = Subcategory.products.through
+    extra = 1
+
+@admin.register(Subcategory)
+class SubcategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
@@ -23,6 +32,7 @@ class ProductAdmin(admin.ModelAdmin):
     # inlines = (value_inline,)
     inlines = [
         ValueAndPricesLine,
+        SubcategoryinLine,
     ]
 
 @admin.register(AddressAndPhone)
