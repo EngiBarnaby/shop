@@ -25,7 +25,7 @@ SECRET_KEY = '2*#6z5d3mg2fqveh86hcirc+il&zn7c*lhnaue4)oksg#oi1dp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.myodtorg.ru', 'http://www.myodtorg.ru/', 'myodtorg.ru',  '84.201.169.197']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

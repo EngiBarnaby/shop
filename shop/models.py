@@ -35,6 +35,18 @@ class Subcategory(models.Model):
         return reverse("shop:product_list_by_subcategory", args=[self.slug])
 
 
+class Sort(models.Model):
+    sorts = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.sorts
+
+class Region(models.Model):
+    regions = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.regions
+
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name="products", on_delete=models.CASCADE)
     name = models.CharField(max_length = 200, db_index = True)
@@ -45,6 +57,8 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    sort = models.ForeignKey("Sort", related_name="product_sort", on_delete=models.CASCADE, null=True)
+    region = models.ForeignKey("Region", related_name="product_region", on_delete=models.CASCADE, null=True)
 
     class Meta:
         ordering = ('name',)

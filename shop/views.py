@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Product, AddressAndPhone
 from cart.forms import *
 from django.core.paginator import Paginator
+from .filters import ProductFilter
 
 # def product_list(request, category_slug=None):
 #     category = None
@@ -23,6 +24,11 @@ def product_list(request, category_slug=None):
         category = get_object_or_404(Category, slug__iexact=category_slug)
         products = Product.objects.filter(category=category)
 
+
+    sort_form = ProductFilter(request.GET, queryset=products)
+
+    products = sort_form.qs
+
     pages = Paginator(products, 20)
 
     if "page" in request.GET:
@@ -32,7 +38,13 @@ def product_list(request, category_slug=None):
 
     page = pages.get_page(page_num)
 
-    context = {"products" : page.object_list, "categories" : categories, "category": category, "page" : page}
+    products_page = page.object_list
+
+    # sort_form = ProductFilter(request.GET, queryset=products)
+    #
+    # products_page = sort_form.qs
+
+    context = {"products" : products_page, "categories" : categories, "category": category, "page" : page, "sort_form" : sort_form}
     return render(request, 'shop/product/list_2.html', context)
 
 def product_detail(request, slug, id):

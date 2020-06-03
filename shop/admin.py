@@ -12,6 +12,14 @@ class SubcategoryinLine(admin.TabularInline):
     model = Subcategory.products.through
     extra = 1
 
+@admin.register(Sort)
+class SubcategoryAdmin(admin.ModelAdmin):
+    list_display = ['sorts']
+
+@admin.register(Region)
+class SubcategoryAdmin(admin.ModelAdmin):
+    list_display = ['regions']
+
 @admin.register(Subcategory)
 class SubcategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
