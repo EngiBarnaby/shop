@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_sorting_bootstrap',
     'crispy_forms',
     'phone_field',
     'phonenumber_field',
