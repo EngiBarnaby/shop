@@ -53,16 +53,45 @@
       </ul>
     </div>
   </nav>
-  {% if not category %}
-    <button type="button" class="btn btn-secondary ml-3 mr-2 mb-4" data-toggle="collapse" data-target="#collapseSort"
-              aria-expanded="false" aria-controls="collapseExample">Фильтр поиска</button>
-    <div class="collapse mb-4" id="collapseSort">
-      <form method="get" class="uniForm">
-          {{ sort_form.form }}
-          <input type="submit" value="Поиск">
-      </form>
-    </div>
-  {% endif %}
+  <!-- Фильтр поиска -->
+    <!-- <button type="button" class="btn btn-secondary ml-3 mr-2 mb-4" data-toggle="collapse" data-target="#collapseSort"
+              aria-expanded="false" aria-controls="collapseExample">Фильтр поиска</button> -->
+      <div class="mb-4">
+        <form method="GET" action="." id="collapseSort">
+            <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="category">Поиск по названию</label>
+                        <div class="input-group">
+                            <input class="form-control py-2 border-right-0 border" type="search" name="name_contains" placeholder="Поиск по Наименованию..." />
+                            <span class="input-group-append">
+                                <div class="input-group-text bg-transparent">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="category">Сорт</label>
+                      <select id="category" class="form-control" name="sort">
+                        <option selected>Выбор... </option>
+                        {% for sort in sorts %}
+                          <option value="{{ sort }}">{{ sort }}</option>
+                        {% endfor %}
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="category">Регион</label>
+                      <select id="category" class="form-control" name="region">
+                        <option selected>Выбор... </option>
+                        {% for region in regions %}
+                          <option value="{{ region }}">{{ region }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                <button type="submit" class="btn" style="background-color: #cfcdc3">Поиск</button>
+            </form>
   </div>
   <div class="container text-center">
     <div class="row row-cols-2 row-cols-md-3">

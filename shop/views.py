@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product, AddressAndPhone
+from .models import *
 from cart.forms import *
 from django.core.paginator import Paginator
 from .filters import ProductFilter
@@ -13,21 +13,34 @@ from .filters import ProductFilter
 #         products = Product.objects.filter(category=category)
 #     context = {"products" : products, "categories": categories, "category":category}
 #     return render(request, "shop/product/list.html", context)
+def is_valid_queryparam(param):
+    return param != '' and param is not None
+
 
 def product_list(request, category_slug=None):
     category = None
     products = Product.objects.all()
     categories = Category.objects.all()
+    sorts = Sort.objects.all()
+    regions = Region.objects.all()
+
+    name_contains = request.GET.get('name_contains')
+    sort = request.GET.get('sort')
+    region = request.GET.get('region')
 
 
     if category_slug:
         category = get_object_or_404(Category, slug__iexact=category_slug)
         products = Product.objects.filter(category=category)
 
+    if is_valid_queryparam(name_contains):
+        products = products.filter(name__icontains=name_contains)
 
-    sort_form = ProductFilter(request.GET, queryset=products)
+    if is_valid_queryparam(sort) and sort != "Выбор...":
+        products = products.filter(sort__sorts=sort)
 
-    products = sort_form.qs
+    if is_valid_queryparam(region) and region !="Выбор...":
+        products = products.filter(region__sorts=region)
 
     pages = Paginator(products, 20)
 
@@ -44,7 +57,8 @@ def product_list(request, category_slug=None):
     #
     # products_page = sort_form.qs
 
-    context = {"products" : products_page, "categories" : categories, "category": category, "page" : page, "sort_form" : sort_form}
+    context = {"products" : products_page, "categories" : categories, "category": category, "page" : page,
+                    "sorts" : sorts, "regions" : regions}
     return render(request, 'shop/product/list_2.html', context)
 
 def product_detail(request, slug, id):
